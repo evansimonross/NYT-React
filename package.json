@@ -1,5 +1,5 @@
 {
-  "name": "NYT-React",
+  "name": "nyt-react",
   "version": "1.0.0",
   "description": "A MERN app to interface with the NYT API",
   "main": "server.js",
@@ -9,7 +9,9 @@
     "if-env": "^1.0.4",
     "mongoose": "^5.3.8"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "dotenv": "^6.1.0"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"
@@ -19,7 +21,7 @@
     "url": "git+https://github.com/evansimonross/NYT-React.git"
   },
   "keywords": [],
-  "author": "",
+  "author": "Evan Simon Ross",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/evansimonross/NYT-React/issues"
