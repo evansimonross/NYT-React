@@ -7,7 +7,7 @@ import { SavedItem, RemoveBtn } from "./components/Saved";
 import { Input, SubmitBtn } from "./components/Search"
 
 class App extends Component {
-  state = { 
+  state = {
     topic: "",
     begin_year: "",
     end_year: "",
@@ -25,20 +25,20 @@ class App extends Component {
 
   loadSaved = () => {
     API.getArticles()
-      .then(res => 
+      .then(res =>
         this.setState({ saved: res.data })
       )
-      .catch(err => 
+      .catch(err =>
         console.log(err)
       );
   };
 
   deleteBook = id => {
     API.deleteBook(id)
-      .then(res => 
+      .then(res =>
         this.loadSaved()
       )
-      .catch(err => 
+      .catch(err =>
         console.log(err)
       );
   }
@@ -58,10 +58,10 @@ class App extends Component {
         begin_date: this.state.begin_year + "0101",
         end_date: this.state.end_year + "1231"
       })
-        .then(res => 
+        .then(res =>
           this.loadResults(res)
         )
-        .catch(err => 
+        .catch(err =>
           console.log(err)
         );
     }
@@ -70,7 +70,64 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+        <Jumbotron>
+          <h1>New York Times Article Scrubber</h1>
+        </Jumbotron>
+        <Container fluid>
+          <Row>
+            <Col size="md-8">
 
+              <Card header="Search">
+                <form>
+                  <Input
+                    value={this.state.topic}
+                    onChange={this.handleInputChange}
+                    name="topic"
+                    placeholder="Topic (required)"
+                  />
+                  <Input
+                    value={this.state.begin_year}
+                    onChange={this.handleInputChange}
+                    name="begin_year"
+                    placeholder="Begin Year"
+                  />
+                  <Input
+                    value={this.state.end_year}
+                    onChange={this.handleInputChange}
+                    name="end_year"
+                    placeholder="End Year"
+                  />
+                </form>
+              </Card>
+
+              <Card header="Results">
+                <List>
+                  {this.state.results.map(result => (
+                    <ResultsItem key={result.web_url}
+                      headline={result.headline}
+                      web_url={result.web_url}
+                      snippet={result.snippet}
+                    />
+                  ))}
+                </List>
+              </Card>
+              
+              <Card header="Saved Articles">
+                <List>
+                  {this.state.saved.map(saved => (
+                    <ResultsItem key={saved.id}
+                      id={saved.id}
+                      headline={saved.headline}
+                      web_url={saved.web_url}
+                      snippet={saved.snippet}
+                      date={saved.created}
+                    />
+                  ))}
+                </List>
+              </Card>
+            </Col>
+          </Row>
+        </Container>
       </div>
     );
   }
