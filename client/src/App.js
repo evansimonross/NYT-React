@@ -6,6 +6,11 @@ import { SavedItem, RemoveBtn } from "./components/Saved";
 import { Input, SubmitBtn } from "./components/Search"
 
 class App extends Component {
+
+  state = { 
+    
+  }
+
   render() {
     return (
       <div className="App">
