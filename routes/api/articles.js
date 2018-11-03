@@ -13,6 +13,7 @@ router
   .get(articlesController.findById)
   .delete(articlesController.remove);
 
+//    ./api/articles/search
 router
   .route("/search")
   .get(function(req, res){
