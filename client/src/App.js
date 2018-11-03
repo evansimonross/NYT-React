@@ -117,12 +117,12 @@ class App extends Component {
               <Card header="Saved Articles">
                 <List>
                   {this.state.saved.map(saved => (
-                    <SavedItem key={saved.id}
-                      id={saved.id}
+                    <SavedItem key={saved._id}
+                      id={saved._id}
                       headline={saved.headline}
                       web_url={saved.web_url}
                       snippet={saved.snippet}
-                      date={saved.created}
+                      date={saved.date}
                     />
                   ))}
                 </List>
