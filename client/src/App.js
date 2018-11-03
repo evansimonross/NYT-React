@@ -20,7 +20,7 @@ class App extends Component {
   }
 
   loadResults = results => {
-    this.setState({ topic: "", begin_year: "", end_year: "", results: results })
+    this.setState({ topic: "", begin_year: "", end_year: "", results: results });
   }
 
   loadSaved = () => {
@@ -53,14 +53,15 @@ class App extends Component {
   handleFormSubmit = event => {
     event.preventDefault();
     if (this.state.topic) {
-      API.searchArticles({
-        q: this.state.topic,
-        begin_date: this.state.begin_year + "0101",
-        end_date: this.state.end_year + "1231"
-      })
-        .then(res =>
-          this.loadResults(res)
-        )
+      let params = {
+        q: this.state.topic
+      }
+      if(this.state.begin_year) { params.begin_date = this.state.begin_year + "0101"; }
+      if(this.state.end) { params.end_date = this.state.end_year + "1231"; }
+      API.searchArticles(params)
+        .then(res => {
+          this.loadResults(res.data);
+        })
         .catch(err =>
           console.log(err)
         );
@@ -75,7 +76,7 @@ class App extends Component {
         </Jumbotron>
         <Container fluid>
           <Row>
-            <Col size="md-2"/>
+            <Col size="md-2" />
             <Col size="md-8">
 
               <Card header="Search">
@@ -98,7 +99,10 @@ class App extends Component {
                     name="end_year"
                     placeholder="End Year"
                   />
-                  <SubmitBtn>Submit</SubmitBtn>
+                  <SubmitBtn
+                    disabled={!(this.state.topic)}
+                    onClick={this.handleFormSubmit}
+                  >Submit</SubmitBtn>
                 </form>
               </Card>
 
@@ -106,7 +110,7 @@ class App extends Component {
                 <List>
                   {this.state.results.map(result => (
                     <ResultsItem key={result.web_url}
-                      headline={result.headline}
+                      headline={result.headline.main}
                       web_url={result.web_url}
                       snippet={result.snippet}
                     />
@@ -128,7 +132,7 @@ class App extends Component {
                 </List>
               </Card>
             </Col>
-            <Col size="md-2"/>
+            <Col size="md-2" />
           </Row>
         </Container>
       </div>
