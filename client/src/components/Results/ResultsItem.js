@@ -2,7 +2,7 @@ import React from "react";
 import {Row, Col} from "../Bootstrap";
 import {SaveBtn} from "./SaveBtn";
 
-export const SavedItem = props => (
+export const ResultsItem = props => (
   <li className="list-group-item">
     <Row>
       <Col size="9">
