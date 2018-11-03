@@ -75,6 +75,7 @@ class App extends Component {
         </Jumbotron>
         <Container fluid>
           <Row>
+            <Col size="md-2"/>
             <Col size="md-8">
 
               <Card header="Search">
@@ -127,6 +128,7 @@ class App extends Component {
                 </List>
               </Card>
             </Col>
+            <Col size="md-2"/>
           </Row>
         </Container>
       </div>
