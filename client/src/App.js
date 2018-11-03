@@ -33,14 +33,16 @@ class App extends Component {
       );
   };
 
-  deleteBook = id => {
-    API.deleteBook(id)
-      .then(res =>
-        this.loadSaved()
-      )
-      .catch(err =>
-        console.log(err)
-      );
+  deleteArticle = id => {
+    API.deleteArticle(id)
+      .then(res =>{
+        console.log(res);
+        this.loadSaved();
+      })
+      .catch(err => {
+        console.log(err);
+        this.loadSaved();
+      });
   }
 
   handleInputChange = event => {
@@ -127,6 +129,7 @@ class App extends Component {
                       web_url={saved.web_url}
                       snippet={saved.snippet}
                       date={saved.date}
+                      delete={this.deleteArticle}
                     />
                   ))}
                 </List>

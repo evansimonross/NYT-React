@@ -22,7 +22,7 @@ module.exports = {
   },
   remove: function(req, res){
     db.Article
-      .find({ _id: req.params.id })
+      .findById({ _id: req.params.id })
       .then(article => article.remove())
       .then(removedArticle => res.json(removedArticle))
       .catch(err => res.status(422).json(err));

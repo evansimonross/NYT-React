@@ -12,7 +12,7 @@ export const SavedItem = props => (
         Date Saved: {props.date}
       </Col>
       <Col size="3">
-        <RemoveBtn id={props.id} />
+        <RemoveBtn id={props.id} onClick={() => props.delete(props.id)}/>
       </Col>
     </Row>
     <Row>
