@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import './App.css';
 import API from "./utils/API";
 import { Card, Col, Container, Jumbotron, List, Row } from "./components/Bootstrap";
-import { ResultsItem, SaveBtn } from "./components/Results";
-import { SavedItem, RemoveBtn } from "./components/Saved";
+import { ResultsItem } from "./components/Results";
+import { SavedItem } from "./components/Saved";
 import { Input, SubmitBtn } from "./components/Search"
 
 class App extends Component {
@@ -97,6 +97,7 @@ class App extends Component {
                     name="end_year"
                     placeholder="End Year"
                   />
+                  <SubmitBtn>Submit</SubmitBtn>
                 </form>
               </Card>
 
@@ -111,11 +112,11 @@ class App extends Component {
                   ))}
                 </List>
               </Card>
-              
+
               <Card header="Saved Articles">
                 <List>
                   {this.state.saved.map(saved => (
-                    <ResultsItem key={saved.id}
+                    <SavedItem key={saved.id}
                       id={saved.id}
                       headline={saved.headline}
                       web_url={saved.web_url}

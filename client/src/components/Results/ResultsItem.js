@@ -1,5 +1,5 @@
 import React from "react";
-import {Row, Col} from "../Grid";
+import {Row, Col} from "../Bootstrap";
 import {SaveBtn} from "./SaveBtn";
 
 export const SavedItem = props => (
