@@ -14,6 +14,6 @@ export default {
     return axios.post("/api/articles", data);
   },
   searchArticles: function(data) {
-    return axios.get("/api/articles/search", data);
+    return axios.post("/api/articles/search", data);
   }
 };

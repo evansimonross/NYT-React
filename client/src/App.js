@@ -8,7 +8,7 @@ import { Input, SubmitBtn } from "./components/Search"
 
 class App extends Component {
   state = {
-    topic: "",
+    q: "",
     begin_year: "",
     end_year: "",
     results: [],
@@ -20,7 +20,7 @@ class App extends Component {
   }
 
   loadResults = results => {
-    this.setState({ topic: "", begin_year: "", end_year: "", results: results });
+    this.setState({ q: "", begin_year: "", end_year: "", results: results });
   }
 
   loadSaved = () => {
@@ -52,9 +52,9 @@ class App extends Component {
 
   handleFormSubmit = event => {
     event.preventDefault();
-    if (this.state.topic) {
+    if (this.state.q) {
       let params = {
-        q: this.state.topic
+        q: this.state.q
       }
       if(this.state.begin_year) { params.begin_date = this.state.begin_year + "0101"; }
       if(this.state.end) { params.end_date = this.state.end_year + "1231"; }
@@ -82,9 +82,9 @@ class App extends Component {
               <Card header="Search">
                 <form>
                   <Input
-                    value={this.state.topic}
+                    value={this.state.q}
                     onChange={this.handleInputChange}
-                    name="topic"
+                    name="q"
                     placeholder="Topic (required)"
                   />
                   <Input
@@ -100,7 +100,7 @@ class App extends Component {
                     placeholder="End Year"
                   />
                   <SubmitBtn
-                    disabled={!(this.state.topic)}
+                    disabled={!(this.state.q)}
                     onClick={this.handleFormSubmit}
                   >Submit</SubmitBtn>
                 </form>

@@ -1,4 +1,5 @@
-const router = require("express").Router();
+const express = require("express");
+const router = express.Router();
 const articlesController = require("../../controllers/articlesController");
 const axios = require("axios");
 require('dotenv').config()
@@ -11,7 +12,8 @@ router.route("/")
 //    ./api/articles/search
 router
   .route("/search")
-  .get(function(req, res){
+  .post(function(req, res){
+    console.log(req);
     let params = {
       "api-key": process.env.API_KEY,
       "q": req.body.q
