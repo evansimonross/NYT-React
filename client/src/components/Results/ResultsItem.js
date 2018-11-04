@@ -9,7 +9,7 @@ export const ResultsItem = props => (
         <a href={props.web_url}>{props.headline}</a>
       </Col>
       <Col size="3">
-        <SaveBtn headline={props.headline} web_url={props.web_url} snippet={props.snippet}/>
+        <SaveBtn index={props.index} onClick={() => props.save(props.index)}/>
       </Col>
     </Row>
   </li>
