@@ -11,7 +11,6 @@ export default {
     return axios.delete("/api/articles/" + id);
   },
   saveArticle: function(data) {
-    console.log(data);
     return axios.post("/api/articles", {
       headline: data.headline.main,
       web_url: data.web_url,
