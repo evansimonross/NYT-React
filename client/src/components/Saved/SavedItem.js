@@ -9,7 +9,7 @@ export const SavedItem = props => (
         <a href={props.web_url}>{props.headline}</a>
       </Col>
       <Col size="3">
-        Date Saved: {props.date}
+        Date Saved: {new Date(props.date).toDateString()}
       </Col>
       <Col size="3">
         <RemoveBtn id={props.id} onClick={() => props.delete(props.id)}/>

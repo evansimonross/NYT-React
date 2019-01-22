@@ -11,7 +11,11 @@ export default {
     return axios.delete("/api/articles/" + id);
   },
   saveArticle: function(data) {
-    return axios.post("/api/articles", data);
+    return axios.post("/api/articles", {
+      headline: data.headline.main,
+      web_url: data.web_url,
+      snippet: data.snippet
+    });
   },
   searchArticles: function(data) {
     return axios.post("/api/articles/search", data);

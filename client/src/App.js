@@ -33,6 +33,19 @@ class App extends Component {
       );
   };
 
+  saveArticle = index => {
+    console.log(this.state.results[index])
+    API.saveArticle(this.state.results[index])
+      .then(res =>{
+        console.log(res);
+        this.loadSaved();
+      })
+      .catch(err => {
+        console.log(err);
+        this.loadSaved();
+      });
+  }
+
   deleteArticle = id => {
     API.deleteArticle(id)
       .then(res =>{
@@ -110,11 +123,13 @@ class App extends Component {
 
               <Card header="Results">
                 <List>
-                  {this.state.results.map(result => (
-                    <ResultsItem key={result.web_url}
+                  {this.state.results.map((result, index) => (
+                    <ResultsItem key={index}
+                      index={index}
                       headline={result.headline.main}
                       web_url={result.web_url}
                       snippet={result.snippet}
+                      save={this.saveArticle}
                     />
                   ))}
                 </List>

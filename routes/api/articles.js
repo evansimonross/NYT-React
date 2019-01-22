@@ -13,7 +13,6 @@ router.route("/")
 router
   .route("/search")
   .post(function(req, res){
-    console.log(req);
     let params = {
       "api-key": process.env.API_KEY,
       "q": req.body.q
@@ -24,11 +23,9 @@ router
       params: params
     })
     .then(function(response){
-      //console.log(response.data.response.docs);
       res.json(response.data.response.docs);
     })
     .catch(function(error){
-      //console.log(error)
       res.send("ERROR");
     })
   });
